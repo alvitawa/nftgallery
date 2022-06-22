@@ -1,0 +1,23 @@
+{% for nft in nfts %}
+
+<a href="{{ nft['image_url'] }}" class="movie_box id_{{nft['id']}}">
+    <li>
+        <!-- <div class="icon_overlay">
+        <a title="Watch now" class="rateicon play" href="https://rarbg.to/torrents.php?search=tt5109280" target="_blank">▶</a>
+    </div> -->
+        <!-- <div class="wrapped"> -->
+        <img class="movie_image {% if nft['invert'] -%} invertimage {% endif %}" src="{{ nft['image_url'] }}"
+            onload="add_loaded(this); $(this).css('visibility','visible').hide().fadeIn('slow')"
+            onmouseover="$(this).next().css('display', 'inline')" onmouseout="$(this).next().css('display', 'none')">
+
+        <div class="info">
+            <h2 class="price">{{ nft['priceInDollar'] | dollarfmt }}</h2>
+            <h2 class="name">{{ nft['name'] | clip }}</h2>
+        </div>
+        <!-- </div> -->
+        <!-- https://api.coinranking.com/v2/nft/{{nft['id']}} -->
+        <!-- {{nft['coinrankingUrl']}} -->
+        <!-- {{nft}} -->
+    </li>
+</a>
+{% endfor %}
